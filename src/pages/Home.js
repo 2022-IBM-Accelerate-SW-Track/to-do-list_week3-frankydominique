@@ -38,9 +38,18 @@ class Home extends Component {
     todo.id = Math.random();
     // Create a array that contains the current array and the new todo item
     let new_list = [...this.state.todos, todo];
+
+    let newDue = this.state.due;
+    if (todo.due == null || todo.due === "Invalid Date") {
+      return;
+    } else {
+      newDue = todo.due;
+    }
+
     // Update the local state with the new array.
     this.setState({
       todos: new_list,
+      due: newDue
     });
   };
   render() {
